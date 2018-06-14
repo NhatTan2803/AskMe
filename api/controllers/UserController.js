@@ -80,7 +80,7 @@ module.exports = {
         User.comparePassword(password, user, (err, valid) => {
           if (valid) {
             req.session.id = user.id,
-            res.redirect('/')  
+              res.redirect('/account/' + user.id)
           }
         })
       }
@@ -94,27 +94,82 @@ module.exports = {
    * `UserController.showAccountForm()`
    */
   showAccountForm: async function (req, res) {
-    return res.json({
-      todo: 'showAccountForm() is not implemented yet!'
-    });
+    let params = req.allParams();
+    var user = await User.findOne({ id: params.id })
+    if (!user) {
+      res.send('No user not found')
+    }
+    else {
+      var question = await Question.find({ answer: '', users: params.id })
+      var allAccount = await User.find()
+      console.log(allAccount);
+
+      res.view('./pages/homepage', { question: question, userId: user.id, allAccount: allAccount })
+    }
+  },
+  showProfile: async function (req, res) {
+    try {
+      console.log('vo try');
+
+      let params = req.allParams();
+      console.log(params);
+
+      var user = await User.find({ id: params.id })
+      var AnsQes = await Question.find({
+        users: params.id, answer: {
+          '!=': ''
+        }
+      })
+      res.view('./pages/profile/', { AnsQes: AnsQes, user: user })
+    } catch (error) {
+      return console.log(error);
+
+    }
+
+
   },
 
   /**
    * `UserController.handlePostAnswer()`
    */
   handlePostAnswer: async function (req, res) {
-    return res.json({
-      todo: 'handlePostAnswer() is not implemented yet!'
-    });
+    try {
+
+      let params = req.allParams();
+      console.log(params);
+
+      const updateAsk = await Question.update({ id: params.id }, { answer: params.answer }).fetch();
+      res.redirect('/account/' + updateAsk[0].users )
+
+    } catch (error) {
+      return console.log(error);
+
+    }
+
   },
 
   /**
    * `UserController.handleAddQuestion()`
    */
   handleAddQuestion: async function (req, res) {
-    return res.json({
-      todo: 'handleAddQuestion() is not implemented yet!'
-    });
+    try {
+      console.log('vo try');
+      console.log(req.allParams());
+
+      let params = req.allParams();
+      var addQuestion = await Question.create({
+        ask: params.ask,
+        users: params.id,
+      })
+        .then(() => {
+          res.redirect('/profile/' + params.id)
+        })
+
+    } catch (error) {
+      return console.log(error);
+    }
+
+
   },
 
   /**

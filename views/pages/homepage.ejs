@@ -226,7 +226,7 @@
               <div class="list-group">
                 <a href class="list-group-item">
                   <span class="pull-left m-r thumb-sm">
-                    <img src="images/a0.jpg" alt="..." class="img-circle">
+                    <img src="/images/a0.jpg" alt="..." class="img-circle">
                   </span>
                   <span class="clear block m-b-none">
                     Use awesome animate.css
@@ -255,7 +255,7 @@
         <li class="dropdown">
           <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
             <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-              <img src="images/a0.jpg" alt="...">
+              <img src="/images/a0.jpg" alt="...">
               <i class="on md b-white bottom"></i>
             </span>
             <span class="hidden-sm hidden-md">John.Smith</span>
@@ -306,7 +306,7 @@
     <div class="aside-wrap">
       <div class="navi-wrap">
         <!-- user -->
-       
+
         <!-- / user -->
 
         <!-- nav -->
@@ -389,13 +389,13 @@
               </ul>
             </li>
             <li>
-              <a href="page_profile.html">
+              <a href="/profile/<%= userId%>">
                 <i class="icon-user icon text-lter"></i>
                 <span>Info</span>
               </a>
             </li>
             <li>
-              <a href="form_element.html">
+              <a href="/login">
                 <i class="glyphicon glyphicon-edit"></i>
                 <span>LogOut</span>
               </a>
@@ -405,7 +405,7 @@
         <!-- nav -->
 
         <!-- aside footer -->
-        
+
         <!-- / aside footer -->
       </div>
     </div>
@@ -425,113 +425,96 @@
         <!-- main -->
         <div class="col">
           <!-- main header -->
-         
+
           <!-- / main header -->
           <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
             <!-- tasks -->
             <div class="row">
               <div class="col-md-6">
-                <div class="panel no-border">
-                  <div class="panel-heading wrapper b-b b-light">
-                    <span class="text-xs text-muted pull-right">
-                      <i class="fa fa-circle text-primary m-r-xs"></i> 12
-                      <i class="fa fa-circle text-info m-r-xs m-l-sm"></i> 30
-                      <i class="fa fa-circle text-warning m-r-xs m-l-sm"></i> 98
-                    </span>
-                    <h4 class="font-thin m-t-none m-b-none text-muted">Teammates</h4>
+                <% for(var i = 0;i < question.length;i++) {%>
+
+                  <div class="m-l-lg m-b-lg">
+
+                    <div>
+                      <div class="m-b" name="ask">
+                        <%= question[i].ask%>
+                      </div>
+                      <div class="panel panel-default m-t-md m-b-n-sm pos-rlt">
+                        <form method="POST" action="/account/answer/<%=question[i].id%>">
+                          <textarea class="form-control no-border" rows="1" name="answer" placeholder="Your comment..."></textarea>
+                          <form>
+                            <div class="panel-footer bg-light">
+                              <button class="btn btn-info pull-right btn-sm">Send</button>
+                              <ul class="nav nav-pills nav-sm">
+                                <li>
+                                  <a href>
+                                    <i class="fa fa-camera text-muted"></i>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href>
+                                    <i class="fa fa-video-camera text-muted"></i>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </form>
+                        </form>
+                      </div>
+                    </div>
                   </div>
-                  <ul class="list-group list-group-lg m-b-none">
-                    <li class="list-group-item">
-                      <a href class="thumb-sm m-r">
-                        <img src="images/a1.jpg" class="r r-2x">
-                      </a>
-                      <span class="pull-right label bg-primary inline m-t-sm">Admin</span>
-                      <a href>Damon Parker</a>
-                    </li>
-                    <li class="list-group-item">
-                      <a href class="thumb-sm m-r">
-                        <img src="images/a2.jpg" class="r r-2x">
-                      </a>
-                      <span class="pull-right label bg-info inline m-t-sm">Member</span>
-                      <a href>Joe Waston</a>
-                    </li>
-                    <li class="list-group-item">
-                      <a href class="thumb-sm m-r">
-                        <img src="images/a3.jpg" class="r r-2x">
-                      </a>
-                      <span class="pull-right label bg-warning inline m-t-sm">Editor</span>
-                      <a href>Jannie Dvis</a>
-                    </li>
-                    <li class="list-group-item">
-                      <a href class="thumb-sm m-r">
-                        <img src="images/a4.jpg" class="r r-2x">
-                      </a>
-                      <span class="pull-right label bg-warning inline m-t-sm">Editor</span>
-                      <a href>Emma Welson</a>
-                    </li>
-                  </ul>
-                  <div class="panel-footer">
-                    <span class="pull-right badge badge-bg m-t-xs">32</span>
-                    <button class="btn btn-primary btn-addon btn-sm">
-                      <i class="fa fa-plus"></i>Add Teammate</button>
-                  </div>
-                </div>
+                  <%}%>
               </div>
               <div class="col-md-6">
                 <div class="list-group list-group-lg list-group-sp">
-                  <a herf class="list-group-item clearfix">
-                    <span class="pull-left thumb-sm avatar m-r">
-                      <img src="images/a4.jpg" alt="...">
-                      <i class="on b-white right"></i>
-                    </span>
-                    <span class="clear">
-                      <span>Chris Fox</span>
-                      <small class="text-muted clear text-ellipsis">What's up, buddy</small>
-                    </span>
-                  </a>
-                  <a herf class="list-group-item clearfix">
-                    <span class="pull-left thumb-sm avatar m-r">
-                      <img src="images/a5.jpg" alt="...">
-                      <i class="on b-white right"></i>
-                    </span>
-                    <span class="clear">
-                      <span>Amanda Conlan</span>
-                      <small class="text-muted clear text-ellipsis">Come online and we need talk about the plans that we have discussed</small>
-                    </span>
-                  </a>
-                  <a herf class="list-group-item clearfix">
-                    <span class="pull-left thumb-sm avatar m-r">
-                      <img src="images/a6.jpg" alt="...">
-                      <i class="busy b-white right"></i>
-                    </span>
-                    <span class="clear">
-                      <span>Dan Doorack</span>
-                      <small class="text-muted clear text-ellipsis">Hey, Some good news</small>
-                    </span>
-                  </a>
-                  <a herf class="list-group-item clearfix">
-                    <span class="pull-left thumb-sm avatar m-r">
-                      <img src="images/a7.jpg" alt="...">
-                      <i class="busy b-white right"></i>
-                    </span>
-                    <span class="clear">
-                      <span>Lauren Taylor</span>
-                      <small class="text-muted clear text-ellipsis">Nice to talk with you.</small>
-                    </span>
-                  </a>
-                  <a herf class="list-group-item clearfix">
-                    <span class="pull-left thumb-sm avatar m-r">
-                      <img src="images/a8.jpg" alt="...">
-                      <i class="away b-white right"></i>
-                    </span>
-                    <span class="clear">
-                      <span>Mike Jackson</span>
-                      <small class="text-muted clear text-ellipsis">This is nice</small>
-                    </span>
-                  </a>
+
+                  <%for (var i = 0;i < allAccount.length ;i++){%>
+                    <a href="/profile/<%= allAccount[i].id%>" class="list-group-item clearfix">
+                      <span class="pull-left thumb-sm avatar m-r">
+                        <img src="/images/a4.jpg" alt="...">
+                        <i class="on b-white right"></i>
+                      </span>
+                      <span class="clear">
+                        <span><%= allAccount[i].name%></span>
+                        <small class="text-muted clear text-ellipsis">What's up, buddy</small>
+                      </span>
+                    </a>
+                    <%}%>
                 </div>
               </div>
             </div>
+
+            <!-- <div class="col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading font-bold">Danh sách câu hỏi</div>
+                  <div class="panel-body">
+                    <table class="table table-striped m-b-none">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Question</th>
+                          <th>action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% for(var i = 0; i < question.length;i++) { %>
+                          <tr>
+                            <td>
+                              <%= question[i].id %>
+                            </td>
+                            <td>
+                              <%= question[i].ask %>
+                            </td>
+                            <td>
+                              <button (click)="infoSystem(sys)" class="btn btn-xs btn-info" data-toggle="modal" data-target="#answerModal">Answer</button>
+                            </td>
+                          </tr>
+                          <%}%>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div> -->
             <!-- / tasks -->
           </div>
         </div>
@@ -564,7 +547,7 @@
                 <ul class="list-group no-bg no-borders pull-in">
                   <li class="list-group-item">
                     <a herf class="pull-left thumb-sm avatar m-r">
-                      <img src="images/a4.jpg" alt="..." class="img-circle">
+                      <img src="/images/a4.jpg" alt="..." class="img-circle">
                       <i class="on b-white bottom"></i>
                     </a>
                     <div class="clear">
@@ -576,7 +559,7 @@
                   </li>
                   <li class="list-group-item">
                     <a herf class="pull-left thumb-sm avatar m-r">
-                      <img src="images/a5.jpg" alt="..." class="img-circle">
+                      <img src="/images/a5.jpg" alt="..." class="img-circle">
                       <i class="on b-white bottom"></i>
                     </a>
                     <div class="clear">
@@ -588,7 +571,7 @@
                   </li>
                   <li class="list-group-item">
                     <a herf class="pull-left thumb-sm avatar m-r">
-                      <img src="images/a6.jpg" alt="..." class="img-circle">
+                      <img src="/images/a6.jpg" alt="..." class="img-circle">
                       <i class="busy b-white bottom"></i>
                     </a>
                     <div class="clear">
@@ -600,7 +583,7 @@
                   </li>
                   <li class="list-group-item">
                     <a herf class="pull-left thumb-sm avatar m-r">
-                      <img src="images/a7.jpg" alt="..." class="img-circle">
+                      <img src="/images/a7.jpg" alt="..." class="img-circle">
                       <i class="away b-white bottom"></i>
                     </a>
                     <div class="clear">
@@ -612,7 +595,7 @@
                   </li>
                   <li class="list-group-item">
                     <a herf class="pull-left thumb-sm avatar m-r">
-                      <img src="images/a8.jpg" alt="..." class="img-circle">
+                      <img src="/images/a8.jpg" alt="..." class="img-circle">
                       <i class="away b-white bottom"></i>
                     </a>
                     <div class="clear">
@@ -628,7 +611,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div role="tabpanel" class="tab-pane tab-3" id="tab-3">
               <div class="wrapper-md">
                 <div class="m-b-sm text-md">Transaction</div>
@@ -653,7 +636,7 @@
               </div>
             </div>
           </div>
-         
+
           <div data-ng-include=" 'tpl/blocks/aside.right.html' ">
 
             <!-- aside right -->
@@ -671,7 +654,7 @@
                       <!-- chat list -->
                       <div class="m-b">
                         <a href class="pull-left thumb-xs avatar">
-                          <img src="images/a2.jpg" alt="...">
+                          <img src="/images/a2.jpg" alt="...">
                         </a>
                         <div class="clear">
                           <div class="pos-rlt wrapper-sm b b-light r m-l-sm">
@@ -684,7 +667,7 @@
                       </div>
                       <div class="m-b">
                         <a href class="pull-right thumb-xs avatar">
-                          <img src="images/a3.jpg" class="img-circle" alt="...">
+                          <img src="/images/a3.jpg" class="img-circle" alt="...">
                         </a>
                         <div class="clear">
                           <div class="pos-rlt wrapper-sm bg-light r m-r-sm">
@@ -696,7 +679,7 @@
                       </div>
                       <div class="m-b">
                         <a href class="pull-left thumb-xs avatar">
-                          <img src="images/a2.jpg" alt="...">
+                          <img src="/images/a2.jpg" alt="...">
                         </a>
                         <div class="clear">
                           <div class="pos-rlt wrapper-sm b b-light r m-l-sm">
@@ -729,9 +712,43 @@
         </div>
         <!-- / right col -->
       </div>
+    </div>
+    <div id="answerModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <!-- Modal content  -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">Hủy</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-12 col-xs-12 col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading font-bold"></div>
+                  <div class="panel-body">
+                    <form role="form" #formStaff="ngForm" method="PUT" action="/account/answer/<%question.id%>">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label>Answer</label>
+                          <input id="staff-name" type="text" [(ngModel)]="staff_name" name="answer" class="form-control" placeholder="Anser the question">
+                        </div>
+                      </div>
+                      <div class="panel-footer">
+                        <button (click)="updateStaff()" class="btn btn-primary btn-block">Send</button>
+                      </div>
+                    </form>
+                  </div>
 
-
-
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!-- /content -->
