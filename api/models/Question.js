@@ -1,0 +1,39 @@
+/**
+ * Question.js
+ *
+ * @description :: A model definition.  Represents a database table/collection/etc.
+ * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
+ */
+
+module.exports = {
+
+  attributes: {
+
+    //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
+    //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
+    //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+
+    ask: { type: 'string' },
+
+    answer: { type: 'string' },
+
+    users: {
+
+      model: 'User',
+      columnName: 'UserId',
+
+    }
+
+    //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
+    //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
+    //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
+
+
+    //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
+    //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
+    //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+
+  },
+
+};
+

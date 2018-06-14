@@ -1,0 +1,114 @@
+<div class="col">
+    <div style="background:url(/images/c4.jpg) center center; background-size:cover">
+        <div class="wrapper-lg bg-white-opacity">
+            <div class="row m-t">
+                <div class="col-sm-7">
+                    <a href class="thumb-lg pull-left m-r">
+                        <img src="/images/a0.jpg" class="img-circle">
+                    </a>
+                    <div class="clear m-b">
+                        <div class="m-b m-t-sm">
+                            <span class="h3 text-black">
+                                <%= user[0].name%>
+                            </span>
+                            <small class="m-l">London, UK</small>
+                        </div>
+                        <p class="m-b">
+                            <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </p>
+                        <a href class="btn btn-sm btn-success btn-rounded">Follow</a>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="pull-right pull-none-xs text-center">
+                        <a href class="m-b-md inline m">
+                            <span class="h3 block font-bold">2k</span>
+                            <small>Followers</small>
+                        </a>
+                        <a href class="m-b-md inline m">
+                            <span class="h3 block font-bold">250</span>
+                            <small>Following</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper bg-white b-b">
+        <ul class="nav nav-pills nav-sm">
+            <li>
+                <a href="/account/<%=user[0].id%>">Home Page</a>
+            </li>
+            <li>
+                <a href>Profile</a>
+            </li>
+            <li>
+                <a href>Messages</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="m-l-lg m-b-lg">
+        <div>
+            <div class="m-b" name="ask">
+            </div>
+            <div class="panel panel-default m-t-md m-b-n-sm pos-rlt">
+                <form method="POST" action="/profile/ask/<%=user[0].id%>">
+                    <textarea class="form-control no-border" rows="3" name="ask" placeholder="Your Question..."></textarea>
+                    <form>
+                        <div class="panel-footer bg-light">
+                            <button class="btn btn-info pull-right btn-sm">Send</button>
+                            <ul class="nav nav-pills nav-sm">
+                                <li>
+                                    <a href>
+                                        <i class="fa fa-camera text-muted"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href>
+                                        <i class="fa fa-video-camera text-muted"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="padder">
+        <div class="streamline b-l b-info m-l-lg m-b padder-v">
+            <% for(var i= 0;i < AnsQes.length;i++){%>
+                <div>
+                    <a class="pull-left thumb-sm avatar m-l-n-md">
+                        <img src="/images/hoi.png" alt="...">
+                    </a>
+                    <div class="m-l-lg m-b-lg panel b-a bg-light lt">
+                        <div class="panel-heading pos-rlt b-light">
+                            <span class="arrow arrow-light left"></span>
+                            <a href>
+                                <%= AnsQes[i].ask%>
+                            </a>
+                            <span class="text-muted m-l-sm pull-right">
+                                1h ago
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div>
+                                <%=AnsQes[i].answer%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+        </div>
+    </div>
+</div>
