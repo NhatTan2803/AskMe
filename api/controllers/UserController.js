@@ -12,7 +12,13 @@ module.exports = {
    * `UserController.showLoginForm()`
    */
   showLoginForm: async function (req, res) {
-    return res.view('./pages/login');
+    let checked = req.cookies.id;
+    console.log('check:' + checked);
+    
+    if (checked) {
+      return res.redirect('/account/'+ checked);
+    }
+      return res.view('./pages/login')
   },
 
   /**
@@ -35,11 +41,7 @@ module.exports = {
     console.log(Isemail);
 
     if (!Isemail) {
-      console.log('vo if');
-
       try {
-        console.log('vo try');
-
         await User.create({
           email,
           password,
@@ -50,7 +52,7 @@ module.exports = {
 
             res.redirect('/login');
           });
-        console.log(user);
+        console.log(User);
 
 
       } catch (error) {
@@ -79,8 +81,12 @@ module.exports = {
 
         User.comparePassword(password, user, (err, valid) => {
           if (valid) {
-            req.session.id = user.id,
-              res.redirect('/account/' + user.id)
+            req.session.userId = user.id
+            res.cookie('id', user.id)
+            res.redirect('/account/' + user.id)
+            console.log(req.session.userId)
+
+
           }
         })
       }
@@ -95,6 +101,9 @@ module.exports = {
    */
   showAccountForm: async function (req, res) {
     let params = req.allParams();
+    console.log('show account:' + res.session);
+    console.log('cookie:' + req.cookies.id);
+
     var user = await User.findOne({ id: params.id })
     if (!user) {
       res.send('No user not found')
@@ -109,18 +118,18 @@ module.exports = {
   },
   showProfile: async function (req, res) {
     try {
-      console.log('vo try');
+      console.log('session:' + req.session.userId);
 
       let params = req.allParams();
       console.log(params);
-
+      var UserHomepage = req.cookies.id;
       var user = await User.find({ id: params.id })
       var AnsQes = await Question.find({
         users: params.id, answer: {
           '!=': ''
         }
       })
-      res.view('./pages/profile/', { AnsQes: AnsQes, user: user })
+      res.view('./pages/profile/', { AnsQes: AnsQes, user: user, UserHomepage: UserHomepage})
     } catch (error) {
       return console.log(error);
 
@@ -139,7 +148,7 @@ module.exports = {
       console.log(params);
 
       const updateAsk = await Question.update({ id: params.id }, { answer: params.answer }).fetch();
-      res.redirect('/account/' + updateAsk[0].users )
+      res.redirect('/account/' + updateAsk[0].users)
 
     } catch (error) {
       return console.log(error);
