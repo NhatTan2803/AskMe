@@ -12,13 +12,17 @@ module.exports = {
    * `UserController.showLoginForm()`
    */
   showLoginForm: async function (req, res) {
-    let checked = req.cookies.id;
-    console.log('check:' + checked);
+    // let checked = req.cookies.id;
+    // console.log('check:' + checked);
     
-    if (checked) {
-      return res.redirect('/account/'+ checked);
-    }
+    // if (checked) {
+    //   return res.redirect('/account/'+ checked);
+    // }
       return res.view('./pages/login')
+  },
+  demo: async function (req,res) {
+    console.log('demo');
+    
   },
 
   /**
