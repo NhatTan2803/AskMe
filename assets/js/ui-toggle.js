@@ -1,6 +1,7 @@
 +function ($) {
 
   $(function(){
+console.log('list');
 
       $(document).on('click', '[ui-toggle-class]', function (e) {
         e.preventDefault();

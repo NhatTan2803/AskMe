@@ -3,6 +3,8 @@
   $(function(){
 
       // nav
+    console.log('vo ui-nav');
+    
       $(document).on('click', '[ui-nav] a', function (e) {
         var $this = $(e.target), $active;
         $this.is('a') || ($this = $this.closest('a'));
