@@ -35,6 +35,19 @@ module.exports = function(grunt) {
         'views/**/*.ejs': require('../pipeline').jsFilesToInject
       }
     },
+    devJsIntro: {
+      options: {
+        startTag: '<!--SCRIPTS_INTRO-->',
+        endTag: '<!--SCRIPTS_INTRO END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').jsIntroFilesToInject,
+        'views/**/*.html': require('../pipeline').jsIntroFilesToInject,
+        'views/**/*.ejs': require('../pipeline').jsIntroFilesToInject
+      }
+    },
 
     devJsBuild: {
       options: {
@@ -95,6 +108,20 @@ module.exports = function(grunt) {
       options: {
         startTag: '<!--STYLES-->',
         endTag: '<!--STYLES END-->',
+        fileTmpl: '<link rel="stylesheet" href="%s">',
+        appRoot: '.tmp/public'
+      },
+
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').cssFilesToInject,
+        'views/**/*.html': require('../pipeline').cssFilesToInject,
+        'views/**/*.ejs': require('../pipeline').cssFilesToInject
+      }
+    },
+    devStylesIntro: {
+      options: {
+        startTag: '<!--STYLES_INTRO-->',
+        endTag: '<!--STYLES_INTRO END-->',
         fileTmpl: '<link rel="stylesheet" href="%s">',
         appRoot: '.tmp/public'
       },
