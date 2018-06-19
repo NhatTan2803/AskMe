@@ -44,12 +44,12 @@ var cssFilesToInject = [
 var cssIntroFilesToInject = [
 
   // Bring in `.css` files for themes and style guides (e.g. Bootstrap, Foundation)
-  'dependencies/**/*.css',
+  'stylesintro/dependencies/**/*.css',
 
   // All of the rest of your custom `.css` files will be injected here,
   // in no particular order.  To customize the ordering, add additional
   // items here, _above_ this one.
-  'styles/**/*.css'
+  'stylesintro/**/*.css'
 ];
 
 
