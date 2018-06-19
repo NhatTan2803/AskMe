@@ -32,7 +32,7 @@ module.exports.routes = {
     action:'index',
   },
  
-  // '/': 'UserController.showLoginForm',
+  '/login': 'UserController.showLoginForm',
   'POST /login': 'UserController.handleLogin',
   '/signup': 'UserController.showSignUpForm',
   'POST /signup': 'UserController.handleSignUp',
