@@ -42,11 +42,7 @@ module.exports = {
     let email = req.body.email,
       password = req.body.password,
       name = req.body.name;
-    console.log(req.body.email);
-
     var Isemail = await User.findOne({ email });
-    console.log(Isemail);
-
     if (!Isemail) {
       try {
         await User.create({
@@ -55,12 +51,9 @@ module.exports = {
           name
         })
           .then(() => {
-            console.log('vo then');
 
             res.redirect('/login');
           });
-        console.log(User);
-
 
       } catch (error) {
         return console.log(error);
@@ -75,25 +68,18 @@ module.exports = {
   handleLogin: async function (req, res) {
     let email = req.body.email,
       password = req.body.password;
-    console.log(email, password);
 
     try {
-      console.log('vo try');
 
       var user = await User.findOne({ email });
-      console.log(user);
 
       if (user) {
-        console.log('vo if');
 
         User.comparePassword(password, user, (err, valid) => {
           if (valid) {
             req.session.userId = user.id
             res.cookie('id', user.id)
             res.redirect('/account/' + user.id)
-            console.log(req.session.userId)
-
-
           }
         })
       }
@@ -108,8 +94,6 @@ module.exports = {
    */
   showAccountForm: async function (req, res) {
     let params = req.allParams();
-    console.log('show account:' + res.session);
-    console.log('cookie:' + req.cookies.id);
 
     var user = await User.findOne({ id: params.id })
     if (!user) {
@@ -118,17 +102,14 @@ module.exports = {
     else {
       var question = await Question.find({ answer: '', users: params.id })
       var allAccount = await User.find()
-      console.log(allAccount);
 
       res.view('./pages/homepage', { question: question, userId: user.id, allAccount: allAccount })
     }
   },
   showProfile: async function (req, res) {
     try {
-      console.log('session:' + req.session.userId);
 
       let params = req.allParams();
-      console.log(params);
       var UserHomepage = req.cookies.id;
       var user = await User.find({ id: params.id })
       var AnsQes = await Question.find({
@@ -152,8 +133,6 @@ module.exports = {
     try {
 
       let params = req.allParams();
-      console.log(params);
-
       const updateAsk = await Question.update({ id: params.id }, { answer: params.answer }).fetch();
       res.redirect('/account/' + updateAsk[0].users)
 
@@ -169,9 +148,6 @@ module.exports = {
    */
   handleAddQuestion: async function (req, res) {
     try {
-      console.log('vo try');
-      console.log(req.allParams());
-
       let params = req.allParams();
       var addQuestion = await Question.create({
         ask: params.ask,
