@@ -7,6 +7,9 @@
 
 module.exports = {
 
+  index: function (req, res) {
+    res.view('./pages/introduce-page', { layout: 'layouts/layout-introduce' });
+  },
 
   /**
    * `UserController.showLoginForm()`
