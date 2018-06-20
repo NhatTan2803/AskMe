@@ -17,15 +17,15 @@ module.exports = {
   showLoginForm: async function (req, res) {
     // let checked = req.cookies.id;
     // console.log('check:' + checked);
-    
+
     // if (checked) {
     //   return res.redirect('/account/'+ checked);
     // }
-      return res.view('./pages/login')
+    return res.view('./pages/login')
   },
-  demo: async function (req,res) {
+  demo: async function (req, res) {
     console.log('demo');
-    
+
   },
 
   /**
@@ -117,7 +117,7 @@ module.exports = {
           '!=': ''
         }
       })
-      res.view('./pages/profile/', { AnsQes: AnsQes, user: user, UserHomepage: UserHomepage})
+      res.view('./pages/profile/', { AnsQes: AnsQes, user: user, UserHomepage: UserHomepage })
     } catch (error) {
       return console.log(error);
 
